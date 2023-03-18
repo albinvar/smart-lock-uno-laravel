@@ -1,39 +1,74 @@
-<x-success wire:model="successModal">
+<x-success wire:model="successLockModal">
     <x-slot name="title">
-        Application Submitted
+        Door Locks Engaged.
     </x-slot>
 
     <x-slot name="content">
-        Hello, Your application has been submitted successfully. We will get back to you soon. Please check out for <strong>emails</strong> from us.
+        {{  session("success") ?? null }}
     </x-slot>
 
     <x-slot name="footer">
-        <x-button wire:click="$toggle('successModal')" wire:loading.attr="disabled">
+        <x-button wire:click="$toggle('successLockModal')" wire:loading.attr="disabled">
             Nevermind
         </x-button>
 
-        <button type="button" class="mx-3 inline-flex items-center justify-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-500 focus:outline-none focus:border-green-700 focus:ring focus:ring-green-200 active:bg-green-600 disabled:opacity-25 transition">
-            Download Application Memo
+        <button type="button" wire:click="$toggle('successLockModal')"  class="mx-3 inline-flex items-center justify-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-500 focus:outline-none focus:border-green-700 focus:ring focus:ring-green-200 active:bg-green-600 disabled:opacity-25 transition">
+            Unlock
         </button>
     </x-slot>
 </x-success>
 
-<x-error wire:model="errorModal">
+<x-error wire:model="errorLockModal">
     <x-slot name="title">
-        Submission Failed
+        Error Encountered...!!!
     </x-slot>
 
     <x-slot name="content">
-        Hello , Your application has failed to submit. Please contact support team if you cant submit your application.
+        {{  session("error") ?? null }}
     </x-slot>
 
     <x-slot name="footer">
-        <x-button wire:click="$toggle('errorModal')" wire:loading.attr="disabled">
+        <x-button wire:click="$toggle('errorLockModal')" wire:loading.attr="disabled">
             Retry
         </x-button>
 
-        <x-button class="ml-2" wire:click="deleteUser" wire:loading.attr="disabled">
-            Contact Support Team
+    </x-slot>
+</x-error>
+
+
+
+<x-success wire:model="successUnlockModal">
+    <x-slot name="title">
+        Door locks disengaged
+    </x-slot>
+
+    <x-slot name="content">
+        {{  session("success") ?? null }}
+    </x-slot>
+
+    <x-slot name="footer">
+        <x-button wire:click="$toggle('successUnlockModal')" wire:loading.attr="disabled">
+            Nevermind
+        </x-button>
+
+        <button type="button" wire:click="lock" class="mx-3 inline-flex items-center justify-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-500 focus:outline-none focus:border-green-700 focus:ring focus:ring-green-200 active:bg-green-600 disabled:opacity-25 transition">
+            Lock again
+        </button>
+    </x-slot>
+</x-success>
+
+<x-error wire:model="errorUnlockModal">
+    <x-slot name="title">
+        Error encountered..
+    </x-slot>
+
+    <x-slot name="content">
+        {{  session("error") ?? null }}
+    </x-slot>
+
+    <x-slot name="footer">
+        <x-button wire:click="$toggle('errorUnlockModal')" wire:loading.attr="disabled">
+            Retry
         </x-button>
     </x-slot>
 </x-error>

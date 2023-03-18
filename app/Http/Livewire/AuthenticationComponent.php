@@ -9,47 +9,66 @@ use Illuminate\Support\Facades\Http;
 class AuthenticationComponent extends Component
 {
 
-    public $successModal = false;
-    public $errorModal = false;
-    public $confirmingPassword = false;
-    public $password = '';
+    public bool $successLockModal = false;
+    public bool $errorLockModal = false;
+    public bool $successUnlockModal = false;
+    public bool $errorUnlockModal = false;
+
+    public bool $confirmingPassword = false;
+
+    public string $password = '';
 
 
     public function lock()
     {
-        $response = Http::post('http://localhost:5000/lock', [
-            'action' => 'lock',
-        ]);
+        $this->successUnlockModal = false;
+        try {
+            $response = Http::asForm()->post(env('API_ENDPOINT', '') . '/lock', [
+                'action' => 'lock',
+                'password' => '',
+            ]);
 
-       $this->confirmingPassword = false;
+            $this->confirmingPassword = false;
 
-        if ($response->ok()) {
-            // handle successful response
-            session()->flash('success', 'Applicant created successfully');
-            $this->successModal = true;
-        } else {
-            // handle error response
-            session()->flash('error', 'Process failed..');
-            $this->errorModal = true;
+            if ($response->ok()) {
+                // handle successful response
+                session()->flash('success', $response->json('message'));
+                $this->successLockModal = true;
+            } else {
+                // handle error response
+                session()->flash('error', $response->json('message'));
+                $this->errorLockModal = true;
+            }
+
+        } catch (\Exception $e) {
+            session()->flash('error', 'Error connecting with the door lock.');
+            $this->errorLockModal = true;
         }
     }
 
     public function unlock()
     {
-        $response = Http::post('http://localhost:5000/lock', [
-            'action' => 'unlock'
-        ]);
+        try {
+            $response = Http::asForm()->post(env('API_ENDPOINT', '') . '/lock', [
+                'action' => 'unlock',
+                'password' => bcrypt($this->password),
+            ]);
 
-        $this->confirmingPassword = false;
+            $this->confirmingPassword = false;
 
-        if ($response->ok()) {
-            // handle successful response
-            session()->flash('success', 'Unlock successful..');
-            $this->successModal = true;
-        } else {
-            // handle error response
-            session()->flash('error', 'Unlocking failed..');
-            $this->errorModal = true;
+            if ($response->ok()) {
+                // handle successful response
+                session()->flash('success', $response->json('message'));
+                $this->successUnlockModal = true;
+            } else {
+                // handle error response
+                session()->flash('error', $response->json('message'));
+                $this->errorUnlockModal = true;
+            }
+
+        } catch (\Exception $e) {
+            session()->flash('error', 'Issues encountered while connecting to the lock.');
+            $this->errorUnlockModal = true;
         }
     }
 
