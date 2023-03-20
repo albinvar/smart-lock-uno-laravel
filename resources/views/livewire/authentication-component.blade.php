@@ -9,7 +9,7 @@
     </div>
 
     <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-        Authentication and registration views are included with Laravel Jetstream.
+        Use these features to control the lock status.
     </p>
 
     <div class="inline-flex p-2 mt-3" role="group">
