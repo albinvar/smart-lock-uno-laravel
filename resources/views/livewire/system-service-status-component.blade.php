@@ -1,6 +1,5 @@
 <div>
-    <div wire:poll.visible.5s>
-        {{ $this->pollServiceStatus() }}
+    <div>
 
         System Status :
 

@@ -7,33 +7,12 @@ use Illuminate\Support\Facades\Http;
 
 class SystemServiceStatusComponent extends Component
 {
+    public $status = false;
 
-    public bool $status = false;
-
-    public function pollServiceStatus()
+    public function mount($status)
     {
-        try {
-            $response = Http::timeout(5)->get(env('API_ENDPOINT', '') . '/ping');
-
-            if ($response->ok() && $response->json('status') == 'ok') {
-                // handle successful response
-                $this->status = true;
-            } else {
-                $this->status = false;
-            }
-
-        } catch (\Exception $e) {
-            $this->status = false;
-        }
+        $this->status = $status;
     }
-
-
-    public function mount()
-    {
-        // Call the API endpoint to get the initial status
-        $this->pollServiceStatus();
-    }
-
     public function render()
     {
         return view('livewire.system-service-status-component');

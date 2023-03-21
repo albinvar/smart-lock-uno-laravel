@@ -18,6 +18,8 @@ class AuthenticationComponent extends Component
 
     public string $password = '';
 
+    public $status = false;
+
 
     public function lock()
     {
@@ -70,6 +72,11 @@ class AuthenticationComponent extends Component
             session()->flash('error', 'Issues encountered while connecting to the lock.');
             $this->errorUnlockModal = true;
         }
+    }
+
+    public function mount($service_status)
+    {
+        $this->status = $service_status;
     }
 
     public function render()

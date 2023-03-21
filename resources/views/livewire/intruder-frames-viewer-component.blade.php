@@ -12,13 +12,17 @@
     The images captured based on unauthorized presence.
 </p>
 
-<div wire:poll.visible class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+<div wire:poll.visible.10s class="mt-5 text-gray-500 dark:text-gray-400 leading-relaxed grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
     {{ $this->fetchIntruders() }}
-    @foreach($intruders as $intruder)
+    @forelse($intruders as $intruder)
         <div class="flex flex-col items-center">
             <img src="{{ env('API_ENDPOINT', '') . $intruder }}" class="w-full h-auto rounded-lg shadows-lg">
             <span class="text-sm mt-2"></span>
         </div>
-    @endforeach
+    @empty
+        <p class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
+            No data found.
+        </p>
+    @endforelse
 </div>
 </div>
