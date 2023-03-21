@@ -21,3 +21,8 @@
     <livewire:intruder-frames-viewer-component />
 </div>
 
+<script>
+    window.livewire.onError(statusCode => {
+        //
+    })
+</script>

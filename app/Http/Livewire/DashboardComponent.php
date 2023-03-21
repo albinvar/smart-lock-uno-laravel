@@ -10,10 +10,13 @@ class DashboardComponent extends Component
 
     public bool $status = false;
 
+    protected $listeners = ['statusUpdated' => '$refresh'];
+
     public function mount()
     {
         // Call the API endpoint to get the initial status
         $this->pollServiceStatus();
+        $this->dispatchBrowserEvent('statusUpdated');
     }
 
     public function pollServiceStatus()
@@ -31,6 +34,16 @@ class DashboardComponent extends Component
         } catch (\Exception $e) {
             $this->status = false;
         }
+    }
+
+    public function getStatusUpdatedProperty()
+    {
+        return $this->status . '_' . time();
+    }
+
+    public function getStatusUpdated()
+    {
+        $this->dispatchBrowserEvent('statusUpdated');
     }
 
     public function render()

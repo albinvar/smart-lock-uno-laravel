@@ -20,6 +20,9 @@ class AuthenticationComponent extends Component
 
     public $status = false;
 
+    protected $listeners = ['statusUpdated'];
+
+
 
     public function lock()
     {
