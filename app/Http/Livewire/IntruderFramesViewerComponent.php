@@ -17,13 +17,18 @@ class IntruderFramesViewerComponent extends Component
 
     public function fetchIntruders()
     {
-        $response = Http::get(env('API_ENDPOINT', 'https://ariduno-api.lov3.pw') . '/intruders');
+        try {
+            $response = Http::get(env('API_ENDPOINT', 'https://ariduno-api.lov3.pw') . '/intruders');
 
-        if ($response->ok()) {
-            $this->intruders = $response->json();
-        } else {
+            if ($response->ok()) {
+                $this->intruders = $response->json();
+            } else {
+                $this->intruders = [];
+            }
+        } catch (\Exception $e) {
             $this->intruders = [];
         }
+
     }
     public function render()
     {
