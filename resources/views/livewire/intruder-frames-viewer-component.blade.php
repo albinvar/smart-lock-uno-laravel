@@ -12,7 +12,8 @@
     The images captured based on unauthorized presence.
 </p>
 
-<div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+<div wire:poll.visible class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    {{ $this->fetchIntruders() }}
     @foreach($intruders as $intruder)
         <div class="flex flex-col items-center">
             <img src="{{ env('API_ENDPOINT', '') . $intruder }}" class="w-full h-auto rounded-lg shadows-lg">
@@ -20,14 +21,4 @@
         </div>
     @endforeach
 </div>
-
-@push('scripts')
-    <script>
-        function fetchIntruders() {
-            Livewire.emit('fetchIntruders');
-        }
-
-        setInterval(fetchIntruders, 30000);
-    </script>
-@endpush
 </div>
