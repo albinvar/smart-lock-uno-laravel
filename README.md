@@ -18,7 +18,7 @@
     <img src="https://img.shields.io/github/issues/albinvar/smart-lock-uno-laravel">
     <img src="https://img.shields.io/github/downloads/albinvar/smart-lock-uno-laravel/total">
     <img src="https://img.shields.io/github/repo-size/albinvar/smart-lock-uno">
-    <a href="LICENCE"><img src="https://img.shields.io/github/license/albinvar/smart-lock-uno-laravel"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/github/license/albinvar/smart-lock-uno-laravel"></a>
     <br />
     <br />
     <a href="https://lock.lov3.pw">View Demo</a>
