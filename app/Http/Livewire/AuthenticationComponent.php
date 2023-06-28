@@ -18,9 +18,17 @@ class AuthenticationComponent extends Component
 
     public string $password = '';
 
+    public string $message = 'sds';
+
     public $status = false;
 
     protected $listeners = ['statusUpdated'];
+
+
+    public function updatedMessage($value)
+    {
+        dd("Test" . $value);
+    }
 
 
 
@@ -37,16 +45,16 @@ class AuthenticationComponent extends Component
 
             if ($response->ok()) {
                 // handle successful response
-                session()->flash('success', $response->json('message'));
+                $this->message = $response->json('message');
                 $this->successLockModal = true;
             } else {
                 // handle error response
-                session()->flash('error', $response->json('message'));
+                $this->message = $response->json('message');
                 $this->errorLockModal = true;
             }
 
         } catch (\Exception $e) {
-            session()->flash('error', 'Error connecting with the door lock.');
+            $this->message = 'Error connecting with the door lock.';
             $this->errorLockModal = true;
         }
     }
@@ -63,16 +71,16 @@ class AuthenticationComponent extends Component
 
             if ($response->ok()) {
                 // handle successful response
-                session()->flash('success', $response->json('message'));
+                $this->message = $response->json('message');
                 $this->successUnlockModal = true;
             } else {
                 // handle error response
-                session()->flash('error', $response->json('message'));
+                $this->message = $response->json('message');
                 $this->errorUnlockModal = true;
             }
 
         } catch (\Exception $e) {
-            session()->flash('error', 'Issues encountered while connecting to the lock.');
+            $this->message = 'Issues encountered while connecting to the lock.';
             $this->errorUnlockModal = true;
         }
     }
