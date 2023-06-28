@@ -16,7 +16,7 @@
     {{ $this->fetchIntruders() }}
     @forelse($intruders as $intruder)
         <div class="flex flex-col items-center">
-            <img src="{{ env('API_ENDPOINT', '') . $intruder }}" class="w-full h-auto rounded-lg shadows-lg">
+            <img src="{{ env('API_ENDPOINT', '') . '/' . $intruder }}" class="w-full h-auto rounded-lg shadows-lg">
             <span class="text-sm mt-2"></span>
         </div>
     @empty
