@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
 
@@ -18,25 +17,18 @@ class AuthenticationComponent extends Component
 
     public string $password = '';
 
-    public string $message = 'sds';
+    public ?string $message = '';
 
     public $status = false;
 
     protected $listeners = ['statusUpdated'];
 
 
-    public function updatedMessage($value)
-    {
-        dd("Test" . $value);
-    }
-
-
-
     public function lock()
     {
         $this->successUnlockModal = false;
         try {
-            $response = Http::asForm()->post(env('API_ENDPOINT', '') . '/lock', [
+            $response = Http::asForm()->post(env('API_ENDPOINT', 'http://127.0.0.1:5000') . '/lock', [
                 'action' => 'lock',
                 'password' => '',
             ]);
@@ -62,7 +54,7 @@ class AuthenticationComponent extends Component
     public function unlock()
     {
         try {
-            $response = Http::asForm()->post(env('API_ENDPOINT', '') . '/lock', [
+            $response = Http::asForm()->post(env('API_ENDPOINT', 'http://127.0.0.1:5000') . '/lock', [
                 'action' => 'unlock',
                 'password' => bcrypt($this->password),
             ]);
