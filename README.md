@@ -9,7 +9,7 @@
   </a>
   
   <h3 align="center">💫 🦋 Smart Lock Uno - Web Module 🔐 ✨</h3>
-    <h6 align="center">Version 1.0.0 - beta 👨🏻‍💻</h6>
+    <h6 align="center">Version 1.0.0 👨🏻‍💻</h6>
 
   <p align="center">
     A smart lock system with facial recognition, RFID authentication, and web API control using Arduino Uno and Python
