@@ -29,7 +29,9 @@
   </p>
 </div>
 
-> Warning ⚠️ : The project is still in its beta phase.
+The [project demo](https://lock.lov3.pw) is hosted for FREE 💝 on [Wexron Hosting](https://wexronhosting.com).
+
+<a href="https://wexronhosting.com"><img src="https://wexronhosting.com/_nuxt/wex.76a224d8.svg" /></a>
 
 <!-- TABLE OF CONTENTS -->
 ## Table of contents 🌈
