@@ -12,7 +12,7 @@
     The images captured based on unauthorized presence.
 </p>
 
-<div wire:poll.visible.10s class="mt-5 text-gray-500 dark:text-gray-400 leading-relaxed grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+<div wire:poll.visible.2s class="mt-5 text-gray-500 dark:text-gray-400 leading-relaxed grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
     {{ $this->fetchIntruders() }}
     @forelse($intruders as $intruder)
         <div class="flex flex-col items-center">
