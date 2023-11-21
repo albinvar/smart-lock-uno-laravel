@@ -41,7 +41,7 @@ class AuthLogController extends Controller
      */
     public function index()
     {;
-        return view('auth-logs', ['authLogs' => AuthLog::all()]);
+        return view('auth-logs', ['authLogs' => AuthLog::latest()->paginate(100)]);
     }
 
     /**
@@ -49,6 +49,6 @@ class AuthLogController extends Controller
      */
     public function appIndex()
     {;
-        return view('app.auth-logs', ['authLogs' => AuthLog::all()]);
+        return view('app.auth-logs', ['authLogs' => AuthLog::latest()->paginate(100)]);
     }
 }

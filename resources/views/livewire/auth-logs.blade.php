@@ -1,6 +1,8 @@
 <div>
+    <!-- Styles -->
+    @livewireStyles
     <main class="h-full overflow-y-auto">
-        <div class="flex justify-center">
+        <div wire:poll.visible.5s class="flex justify-center">
 
             <div class="bg-white dark:bg-gray-800 mt-4 px-4 py-3 rounded-lg shadow-md max-w-xs lg:max-w-xl mb-6">
 
@@ -34,5 +36,5 @@
         </div>
 
 </main>
-
+@livewireScripts
 </div>
