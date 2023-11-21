@@ -10,7 +10,7 @@
             You can lock/unlock your door from here.
         </p>
         <div class="mt-12 bg-gray-300 dark:bg-gray-800 bg-opacity-50 rounded-xl p-6 lg:p-8">
-            <livewire:system-service-status-component :status="$status" wire:key="system-service-status-component-{{ $status }}" />
+            <livewire:system-service-status-component :status="$status" :faceEnabled="$faceEnabled" :rfidEnabled="$rfidEnabled" :webapiEnabled="$webapiEnabled" wire:key="system-service-status-component-{{ $status }}" />
         </div>
     </div>
 

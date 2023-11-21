@@ -9,9 +9,16 @@ class SystemServiceStatusComponent extends Component
 {
     public $status = false;
 
-    public function mount($status)
+    public $faceEnabled = false;
+    public $rfidEnabled = false;
+    public $webapiEnabled = false;
+
+    public function mount($status, $faceEnabled, $rfidEnabled, $webapiEnabled)
     {
         $this->status = $status;
+        $this->faceEnabled = $faceEnabled;
+        $this->rfidEnabled = $rfidEnabled;
+        $this->webapiEnabled = $webapiEnabled;
     }
     public function render()
     {

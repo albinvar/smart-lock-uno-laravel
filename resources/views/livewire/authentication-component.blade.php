@@ -65,7 +65,7 @@
         </x-slot>
 
         <x-slot name="content">
-            {{ $message }}
+            {{ $message ?? 'Something went wrong, please try again.' }}
         </x-slot>
 
         <x-slot name="footer">
@@ -104,7 +104,7 @@
         </x-slot>
 
         <x-slot name="content">
-            {{ $message }}
+            {{ $message ?? 'Something went wrong, please try again.' }}
         </x-slot>
 
         <x-slot name="footer">
