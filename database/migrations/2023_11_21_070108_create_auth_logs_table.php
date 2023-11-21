@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('auth_logs', function (Blueprint $table) {
             $table->id();
+            $table->boolean('status');
             $table->string('type');
             $table->string('message');
             $table->timestamps();
