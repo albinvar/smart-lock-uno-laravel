@@ -128,8 +128,8 @@
                 <x-input type="number" class="mt-1 block w-3/4"
                          autocomplete="pin"
                          placeholder="{{ __('Access Pin') }}"
-                         x-ref="pin"
-                         wire:model.defer="pin"
+                         x-ref="password"
+                         wire:model.defer="password"
                          wire:keydown.enter="unlock" />
 
                 <x-input-error for="password" class="mt-2" />
