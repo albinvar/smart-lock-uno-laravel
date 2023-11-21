@@ -30,9 +30,9 @@ class AuthLogController extends Controller
             $authLog->message = $request->input('message');
             $authLog->save();
 
-            return response()->json(['message' => 'Auth log created successfully'], 201);
+            return response()->json(['status'=> true, 'message' => 'Auth log created successfully'], 201);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Failed to create auth log'], 500);
+            return response()->json(['status' => false, 'error' => 'Failed to create auth log'], 500);
         }
     }
 
