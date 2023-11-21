@@ -21,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // create a route to store the auth log. This route will be called from the python script
 Route::post('/auth-log', [App\Http\Controllers\AuthLogController::class, 'store']);
+
+// create a route to fetch all the auth logs
+Route::get('/auth-logs', [App\Http\Controllers\AuthLogController::class, 'index']);

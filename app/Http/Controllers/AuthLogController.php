@@ -14,18 +14,18 @@ class AuthLogController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'status' => 'required|boolean',
+            'status' => 'required|in:success,failure',
             'type' => 'required|string|in:face,rfid,password',
             'message' => 'required|string',
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 400);
+            return response()->json(['status'=> false, 'error' => $validator->errors()], 400);
         }
 
         try {
             $authLog = new AuthLog();
-            $authLog->status = $request->input('status');
+            $authLog->status = $request->input('status') === 'success' ? 1 : 0;
             $authLog->type = $request->input('type');
             $authLog->message = $request->input('message');
             $authLog->save();
@@ -33,6 +33,20 @@ class AuthLogController extends Controller
             return response()->json(['status'=> true, 'message' => 'Auth log created successfully'], 201);
         } catch (\Exception $e) {
             return response()->json(['status' => false, 'error' => 'Failed to create auth log'], 500);
+        }
+    }
+
+    /**
+     * Display all the auth logs.
+     */
+    public function index()
+    {
+        try {
+            $authLogs = AuthLog::all();
+
+            return response()->json(['status' => true, 'data' => $authLogs], 200);
+        } catch (\Exception $e) {
+            return response()->json(['status' => false, 'error' => 'Failed to fetch auth logs'], 500);
         }
     }
 }
