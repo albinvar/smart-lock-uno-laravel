@@ -15,7 +15,7 @@ class AuthLogController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'status' => 'required|in:success,failure',
-            'type' => 'required|string|in:face,rfid,password',
+            'type' => 'required|string|in:face,rfid,webapi',
             'message' => 'required|string',
         ]);
 
@@ -41,12 +41,6 @@ class AuthLogController extends Controller
      */
     public function index()
     {
-        try {
-            $authLogs = AuthLog::all();
-
-            return response()->json(['status' => true, 'data' => $authLogs], 200);
-        } catch (\Exception $e) {
-            return response()->json(['status' => false, 'error' => 'Failed to fetch auth logs'], 500);
-        }
+        return view('auth-logs', ['authLogs' => AuthLog::all()]);
     }
 }

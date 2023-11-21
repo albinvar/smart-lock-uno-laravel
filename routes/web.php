@@ -25,4 +25,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    # Create a route to view the auth logs.
+    Route::get('/auth-logs', [App\Http\Controllers\AuthLogController::class, 'index']);
 });
