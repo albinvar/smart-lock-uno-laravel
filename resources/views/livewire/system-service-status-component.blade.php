@@ -1,7 +1,7 @@
 <div>
     <div>
 
-        System Status :
+        Lock Status :
 
         @if($status)
             <div class="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-medium mr-2  rounded-full dark:bg-green-900 dark:text-green-300 animate-pulse">Online</div>
