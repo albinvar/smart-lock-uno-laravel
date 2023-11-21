@@ -35,5 +35,7 @@ Route::middleware([
         Route::get('/auth-logs', [App\Http\Controllers\AuthLogController::class, 'appIndex'])->name('app.auth.logs');
 
         Route::get('/intruders', [App\Http\Controllers\MainController::class, 'appIntruders'])->name('app.intruders');
+
+        Route::get('/dashboard', [App\Http\Controllers\MainController::class, 'appDashboard'])->name('app.dashboard');
     });
 });

@@ -11,4 +11,10 @@ class MainController extends Controller
     {
         return view('app.intruders');
     }
+
+    // create a method to view the dashboard page
+    public function appDashboard()
+    {
+        return view('app.dashboard');
+    }
 }
