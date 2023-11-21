@@ -33,5 +33,7 @@ Route::middleware([
     Route::group(['prefix' => 'app'], function () {
         # Create a route to view the auth logs.
         Route::get('/auth-logs', [App\Http\Controllers\AuthLogController::class, 'appIndex'])->name('app.auth.logs');
+
+        Route::get('/intruders', [App\Http\Controllers\MainController::class, 'appIntruders'])->name('app.intruders');
     });
 });
