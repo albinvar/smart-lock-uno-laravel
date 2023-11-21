@@ -28,4 +28,10 @@ Route::middleware([
 
     # Create a route to view the auth logs.
     Route::get('/auth-logs', [App\Http\Controllers\AuthLogController::class, 'index'])->name('auth.logs');
+
+    # create a group of routes to manage the pages for app users
+    Route::group(['prefix' => 'app'], function () {
+        # Create a route to view the auth logs.
+        Route::get('/auth-logs', [App\Http\Controllers\AuthLogController::class, 'appIndex'])->name('app.auth.logs');
+    });
 });

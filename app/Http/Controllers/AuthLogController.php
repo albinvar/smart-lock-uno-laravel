@@ -40,7 +40,15 @@ class AuthLogController extends Controller
      * Display all the auth logs.
      */
     public function index()
-    {
+    {;
         return view('auth-logs', ['authLogs' => AuthLog::all()]);
+    }
+
+    /**
+     * Display all the auth logs.
+     */
+    public function appIndex()
+    {;
+        return view('app.auth-logs', ['authLogs' => AuthLog::all()]);
     }
 }
