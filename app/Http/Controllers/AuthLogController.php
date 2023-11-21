@@ -35,5 +35,4 @@ class AuthLogController extends Controller
             return response()->json(['status' => false, 'error' => 'Failed to create auth log'], 500);
         }
     }
-
 }

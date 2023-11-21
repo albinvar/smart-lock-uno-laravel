@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// create a route to store the auth log. This route will be called from the python script
+Route::post('/auth-log', [App\Http\Controllers\AuthLogController::class, 'store']);
