@@ -125,11 +125,11 @@
             {{ __('Please enter your password to unlock the lock.') }}
 
             <div class="mt-4" x-data="{}" x-on:confirming-logout-other-browser-sessions.window="setTimeout(() => $refs.password.focus(), 250)">
-                <x-input type="password" class="mt-1 block w-3/4"
-                         autocomplete="current-password"
-                         placeholder="{{ __('Password') }}"
-                         x-ref="password"
-                         wire:model.defer="password"
+                <x-input type="number" class="mt-1 block w-3/4"
+                         autocomplete="pin"
+                         placeholder="{{ __('Access Pin') }}"
+                         x-ref="pin"
+                         wire:model.defer="pin"
                          wire:keydown.enter="unlock" />
 
                 <x-input-error for="password" class="mt-2" />
