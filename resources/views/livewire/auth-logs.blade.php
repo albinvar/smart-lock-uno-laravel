@@ -13,7 +13,7 @@
                                 <br>
                                 <span class="text-xs mt-2 font-italic text-gray-600 font-semibold dark:text-gray-500">Method : {{ $log->type }}</span>
                                 <p class="text-sm font-sans dark:text-gray-300">{{ $log->message }}</p>
-                                <div>
+                                <div class="mt-2">
                                     <span class="text-xs mt-2 font-italic text-gray-600 font-semibold dark:text-gray-500">Recorded : {{ \Carbon\Carbon::parse($log->created_at)->diffForHumans() }}</span>
                                 </div>
                             </div>
